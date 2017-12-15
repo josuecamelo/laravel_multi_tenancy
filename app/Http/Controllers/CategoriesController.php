@@ -15,7 +15,8 @@ class CategoriesController extends Controller
     public function index()
     {
         //$accountId = \Auth::user()->account_id;
-        $categories = Category::all();
+        //$categories = Category::byAccount($accountId)->get(); //usando escopo criado em Category
+        $categories = Category::all(); //usando escopo criado em Category
         return view('categories.index',compact('categories'));
     }
 
