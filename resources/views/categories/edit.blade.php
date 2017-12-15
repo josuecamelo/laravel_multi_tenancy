@@ -1,9 +1,10 @@
-@extends(layoutTenant())
+{{--@extends(layoutTenant())--}}
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
 
-        {!! Form::model($category, ['url'=>routeTenant('categories.update', [$category->id]),'method' => 'PUT']) !!}
+        {!! Form::model($category, ['url'=>route('categories.update', [$category->id]),'method' => 'PUT']) !!}
 
         @include('categories._form')
 

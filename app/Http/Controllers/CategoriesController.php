@@ -60,7 +60,7 @@ class CategoriesController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($account, Category $category)
+    public function edit(Category $category)
     {
         return view('categories.edit',compact('category'));
     }
