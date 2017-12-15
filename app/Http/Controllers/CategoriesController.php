@@ -72,7 +72,7 @@ class CategoriesController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$account, Category $category)
+    public function update(Request $request,Category $category)
     {
         $category->update($request->all());
         return redirect()->route('categories.index');
