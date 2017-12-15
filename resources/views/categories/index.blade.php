@@ -1,10 +1,12 @@
-@extends(layoutTenant())
+@extends('layouts.app')
+{{--@extends(layoutTenant())--}}
 
 @section('content')
     <div class="container">
         <h3>Categorias</h3>
 
-        <a href="{{ routeTenant('categories.create') }}" class="btn btn-default">Nova categoria</a>
+        {{--<a href="{{ routeTenant('categories.create') }}" class="btn btn-default">Nova categoria</a>--}}
+        <a href="{{ route('categories.create') }}" class="btn btn-default">Nova categoria</a>
         <br><br>
 
         <table class="table table-bordered">
@@ -22,8 +24,12 @@
                 <td>{{$category->id}}</td>
                 <td>{{$category->name}}</td>
                 <td>
-                    <a href="{{routeTenant('categories.edit',['id'=>$category->id])}}" class="btn btn-default btn-sm">
-                        Editar
+                    {{--<a href="{{routeTenant('categories.edit',['id'=>$category->id])}}" class="btn btn-default btn-sm">--}}
+                        {{--Editar--}}
+                    {{--</a>--}}
+
+                    <a href="{{route('categories.edit',['id'=>$category->id])}}" class="btn btn-default btn-sm">
+                    Editar
                     </a>
                 </td>
             </tr>
