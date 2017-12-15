@@ -13,6 +13,12 @@ class UsersTableSeeder extends Seeder
     {
         factory(\App\User::class,1)->create([
             'email' => 'admin@user.com',
+            'account_id' => 1
+        ]);
+
+        factory(\App\User::class,1)->create([
+            'email' => 'admin@user.com',
+            'account_id' => 2
         ]);
     }
 }
