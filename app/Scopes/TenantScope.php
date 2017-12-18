@@ -33,7 +33,7 @@ class TenantScope implements Scope
         $tenantManager = app(TenantManager::class);
         if($tenantManager->getTenant()){
             $accountId = $tenantManager->getTenant()->id;
-            $model->account_id = $accountId;
+            $builder->where('account_id',$accountId);
         }
     }
 }
