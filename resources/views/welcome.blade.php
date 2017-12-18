@@ -71,8 +71,8 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login', ['account' => \Request::route('account')]) }}">Login</a>
-                        <a href="{{ route('register', ['account' => \Request::route('account')]) }}">Register</a>
+                        <a href="{{ routeTenant('login') }}">Login</a>
+                        <a href="{{ routeTenant('register') }}">Register</a>
                     @endauth
                 </div>
             @endif
