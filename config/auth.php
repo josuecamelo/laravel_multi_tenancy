@@ -41,6 +41,12 @@ return [
             'provider' => 'users',
         ],
 
+        //criação - 18/12/2017
+        'web_tenants' => [
+            'driver' => 'session',
+            'provider' => 'user_accounts'
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -68,6 +74,12 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        //18-12/2017
+        'user_accounts' => [
+            'driver' => 'eloquent',
+            'model' => App\UserAccount::class,
         ],
 
         // 'users' => [
@@ -99,4 +111,9 @@ return [
         ],
     ],
 
+    'user_accounts' => [
+        'provider' => 'user_accounts',
+        'table' => 'password_resets',
+        'expire' => 60,
+    ],
 ];
