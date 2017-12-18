@@ -21,31 +21,35 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('categories', 'CategoriesController');
 
 
-Route::domain("{tenant?}.josuecamelo.laravel")
+$appUrl = config('app.url');
+$domain = parse_url($appUrl)['host'];
+$tenantParam = config('tenant.route_param');
+
+
+$appUrl = config('app.url');
+$domain = parse_url($appUrl)['host'];
+$tenantParam = config('tenant.route_param');
+Route::domain("{{$tenantParam}}.$domain")
     //->middleware('tenant')
     ->group(function () {
         Auth::routes();
-
         Route::get('/test', function ($tenant) {
-            return "Hello World! $tenant";
+            return "Hello World!$tenant";
         });
-
         Route::prefix('/admin')
-            //->middleware('auth:web')
+            ->middleware('auth:web')
             ->group(function () {
                 Route::get('/', function () {
                     return "Admin";
                 });
             });
-
         Route::prefix('/app')
-            //->middleware('auth:web_tenants')
+            ->middleware('auth:web_tenants')
             ->group(function () {
                 Route::resource('categories', 'CategoriesController');
                 Route::get('/', function () {
                     return "App Multi tenancy";
                 });
             });
-
         Route::get('/home', 'HomeController@index')->name('home');
     });
