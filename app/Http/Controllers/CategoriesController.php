@@ -39,8 +39,8 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         Category::create($request->all());
-        return redirect()->route('categories.index');
-        //return redirect()->routeTenant('categories.index');
+        //return redirect()->route('categories.index');
+        return redirect()->routeTenant('categories.index');
     }
 
     /**

@@ -15,7 +15,7 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-default navbar-static-top navbar-inverse">
+    <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
 
@@ -33,7 +33,7 @@
                 </a>
             </div>
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            <div class="collapse navbar-collapse navbar-inverse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 @if (Auth::check())
                     <ul class="nav navbar-nav">

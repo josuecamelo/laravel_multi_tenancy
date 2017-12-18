@@ -8,6 +8,7 @@
 
 namespace App\Scopes;
 
+use App\Tenant\TenantManager;
 use Illuminate\Database\Eloquent\Model;
 
 trait TenantModels{
@@ -18,8 +19,15 @@ trait TenantModels{
 
         //Ao Criar Registro
         static::creating(function(Model $model){
-            if(\Auth::user()){
+            /*if(\Auth::user()){
                 $accountId = \Auth::user()->account_id;
+                $model->account_id = $accountId;
+            }*/
+
+            /** @var TenantManager $tenantManager */
+            $tenantManager = app(TenantManager::class);
+            if($tenantManager->getTenant()){
+                $accountId = $tenantManager->getTenant()->id;
                 $model->account_id = $accountId;
             }
         });

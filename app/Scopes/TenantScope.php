@@ -9,6 +9,7 @@
 
 namespace App\Scopes;
 
+use App\Tenant\TenantManager;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
@@ -25,7 +26,14 @@ class TenantScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $accountId = \Auth::user()->account_id;
-        $builder->where('account_id', $accountId);
+        /*$accountId = \Auth::user()->account_id;
+        $builder->where('account_id', $accountId);*/
+
+        /** @var TenantManager $tenantManager */
+        $tenantManager = app(TenantManager::class);
+        if($tenantManager->getTenant()){
+            $accountId = $tenantManager->getTenant()->id;
+            $model->account_id = $accountId;
+        }
     }
 }
