@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends(layoutTenant())
 
 @section('content')
     <div class="container">
         <h3>Nova categoria</h3>
 
-        {!! Form::open(['url'=>route('categories.store'), 'class'=>'form']) !!}
+        {!! Form::open(['url'=>routeTenant('categories.store'), 'class'=>'form']) !!}
 
         @include('categories._form')
 

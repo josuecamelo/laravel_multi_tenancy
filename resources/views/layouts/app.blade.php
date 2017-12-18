@@ -37,7 +37,7 @@
                     <!-- Left Side Of Navbar -->
                     @if (Auth::check())
                         <ul class="nav navbar-nav">
-                            <li><a href="{{ route('categories.index', ['account' => \Request::route('account')]) }}">Categoria</a></li>
+                            <li><a href="{{ routeTenant('categories.index') }}">Categoria</a></li>
                         </ul>
                     @endif
 
@@ -45,8 +45,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="{{ route('login', ['account' => \Request::route('account')]) }}">Login</a></li>
-                            <li><a href="{{ route('register', ['account' => \Request::route('account')]) }}">Register</a></li>
+                            <li><a href="{{ routeTenant('login') }}">Login</a></li>
+                            <li><a href="{{ routeTenant('register') }}">Register</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -55,13 +55,13 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('logout', ['account' => \Request::route('account')]) }}"
+                                        <a href="{{ routeTenant('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
 
-                                        <form id="logout-form" action="{{ route('logout', ['account' => \Request::route('account')]) }}" method="POST" style="display: none;">
+                                        <form id="logout-form" action="{{ routeTenant('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
