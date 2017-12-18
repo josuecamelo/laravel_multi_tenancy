@@ -14,6 +14,9 @@ return [
     */
 
     'defaults' => [
+        //'guard' => 'web_tenants',
+        //'passwords' => 'user_accounts',
+
         'guard' => 'web',
         'passwords' => 'users',
     ],

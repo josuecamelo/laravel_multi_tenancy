@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('categories', 'CategoriesController');
 
 
-Route::domain("{tenant}.josuecamelo.laravel")
+Route::domain("{tenant?}.josuecamelo.laravel")
     //->middleware('tenant')
     ->group(function () {
         Auth::routes();
