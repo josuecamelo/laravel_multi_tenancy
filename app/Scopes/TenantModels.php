@@ -18,8 +18,10 @@ trait TenantModels{
 
         //Ao Criar Registro
         static::creating(function(Model $model){
-            $accountId = \Auth::user()->account_id;
-            $model->account_id = $accountId;
+            if(\Auth::user()){
+                $accountId = \Auth::user()->account_id;
+                $model->account_id = $accountId;
+            }
         });
     }
 }
