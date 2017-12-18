@@ -19,3 +19,33 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('categories', 'CategoriesController');
+
+
+Route::domain("{tenant}.josuecamelo.laravel")
+    //->middleware('tenant')
+    ->group(function () {
+        Auth::routes();
+
+        Route::get('/test', function ($tenant) {
+            return "Hello World! $tenant";
+        });
+
+        Route::prefix('/admin')
+            //->middleware('auth:web')
+            ->group(function () {
+                Route::get('/', function () {
+                    return "Admin";
+                });
+            });
+
+        Route::prefix('/app')
+            //->middleware('auth:web_tenants')
+            ->group(function () {
+                Route::resource('categories', 'CategoriesController');
+                Route::get('/', function () {
+                    return "App Multi tenancy";
+                });
+            });
+
+        Route::get('/home', 'HomeController@index')->name('home');
+    });

@@ -13,16 +13,16 @@ class CreateUserAccountsTable extends Migration
      */
     public function up()
     {
-        /*Schema::create('user_accounts', function (Blueprint $table) {
+        Schema::create('user_accounts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer(config('tenant.foreign_key'))->unsigned();
-            $table->foreign(config('tenant.foreign_key'))->references('id')->on('accounts');
+            //$table->integer(config('tenant.foreign_key'))->unsigned();
+            //$table->foreign(config('tenant.foreign_key'))->references('id')->on('accounts');
             $table->rememberToken();
             $table->timestamps();
-        });*/
+        });
     }
 
     /**
@@ -32,6 +32,6 @@ class CreateUserAccountsTable extends Migration
      */
     public function down()
     {
-        //Schema::dropIfExists('user_accounts');
+        Schema::dropIfExists('user_accounts');
     }
 }
