@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Middleware;
+use App\Tenant\TenantManager;
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class DefineAuthGuard
 {
@@ -26,6 +28,8 @@ class DefineAuthGuard
                 'auth.defaults.guard' => 'web_tenants',
                 'auth.defaults.passwords' => 'user_accounts'
             ]);
+
+            //dd(Auth::guard());
         }
 
         return $next($request);
