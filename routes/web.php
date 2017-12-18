@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('categories', 'CategoriesController');
@@ -25,12 +25,8 @@ $appUrl = config('app.url');
 $domain = parse_url($appUrl)['host'];
 $tenantParam = config('tenant.route_param');
 
-
-$appUrl = config('app.url');
-$domain = parse_url($appUrl)['host'];
-$tenantParam = config('tenant.route_param');
 Route::domain("{{$tenantParam}}.$domain")
-    //->middleware('tenant')
+    ->middleware('tenant')
     ->group(function () {
         Auth::routes();
         Route::get('/test', function ($tenant) {
@@ -53,3 +49,6 @@ Route::domain("{{$tenantParam}}.$domain")
             });
         Route::get('/home', 'HomeController@index')->name('home');
     });
+
+
+Auth::routes();
