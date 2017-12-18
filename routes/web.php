@@ -51,4 +51,4 @@ Route::domain("{{$tenantParam}}.$domain")
     });
 
 
-Auth::routes();
+//Auth::routes();
