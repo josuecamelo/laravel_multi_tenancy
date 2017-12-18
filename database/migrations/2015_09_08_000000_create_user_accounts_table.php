@@ -20,6 +20,12 @@ class CreateUserAccountsTable extends Migration
             $table->string('password');
             //$table->integer(config('tenant.foreign_key'))->unsigned();
             //$table->foreign(config('tenant.foreign_key'))->references('id')->on('accounts');
+
+            $table->integer('account_id')->unsigned(); //usuario separado por conta
+            $table->foreign('account_id')
+                ->references('id')
+                ->on('accounts');
+
             $table->rememberToken();
             $table->timestamps();
         });
