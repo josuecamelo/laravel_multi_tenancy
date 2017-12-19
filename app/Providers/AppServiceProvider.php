@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Routing\Redirector;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
@@ -31,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $this->app->extend('redirect', function ($redirectorOriginal, $app) {
-            $redirector = new \Redirector($app['url']);
+            $redirector = new Redirector($app['url']);
             if (isset($app['session.store'])) {
                 $redirector->setSession($app['session.store']);
             }

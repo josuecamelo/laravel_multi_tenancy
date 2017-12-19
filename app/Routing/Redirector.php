@@ -6,6 +6,9 @@
  * Date: 18/12/17
  * Time: 14:59
  */
+
+namespace App\Routing;
+
 use Illuminate\Routing\Redirector as RedirectorLaravel;
 
 class Redirector extends RedirectorLaravel
